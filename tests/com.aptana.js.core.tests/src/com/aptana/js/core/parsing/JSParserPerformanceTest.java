@@ -27,11 +27,12 @@ import org.eclipse.test.performance.Performance;
 import com.aptana.core.util.IOUtil;
 import com.aptana.js.core.JSCorePlugin;
 import com.aptana.js.core.tests.ITestFiles;
+import com.aptana.parsing.IParser;
 
-public class JSParserPerformanceTest extends GlobalTimePerformanceTestCase
+public abstract class JSParserPerformanceTest extends GlobalTimePerformanceTestCase
 {
 
-	private JSParser fParser;
+	private IParser fParser;
 
 	/**
 	 * assertLocalFiles
@@ -158,8 +159,10 @@ public class JSParserPerformanceTest extends GlobalTimePerformanceTestCase
 	protected void setUp() throws Exception
 	{
 		super.setUp();
-		fParser = new JSParser();
+		fParser = createParser();
 	}
+
+	protected abstract IParser createParser();
 
 	/*
 	 * (non-Javadoc)
@@ -179,12 +182,12 @@ public class JSParserPerformanceTest extends GlobalTimePerformanceTestCase
 	 */
 	public void testDojo() throws Exception
 	{
-		assertParse(1000, ITestFiles.DOJO_FILES);
+		assertParse(1, ITestFiles.DOJO_FILES);
 	}
 
 	public void testDojoMinified() throws Exception
 	{
-		assertParse(1000, "performance/dojo.js.minified.js");
+		assertParse(1, "performance/dojo.js.minified.js");
 	}
 
 	/**
@@ -194,7 +197,7 @@ public class JSParserPerformanceTest extends GlobalTimePerformanceTestCase
 	 */
 	public void testExt() throws Exception
 	{
-		assertParse(15, ITestFiles.EXT_FILES);
+		assertParse(1, ITestFiles.EXT_FILES);
 	}
 
 	/**
@@ -204,7 +207,7 @@ public class JSParserPerformanceTest extends GlobalTimePerformanceTestCase
 	 */
 	public void testJaxerFiles() throws Exception
 	{
-		assertParse(50, ITestFiles.JAXER_FILES);
+		assertParse(1, ITestFiles.JAXER_FILES);
 	}
 
 	/**
@@ -214,7 +217,7 @@ public class JSParserPerformanceTest extends GlobalTimePerformanceTestCase
 	 */
 	public void testTiMobile() throws Exception
 	{
-		assertParse(375, ITestFiles.TIMOBILE_FILES);
+		assertParse(1, ITestFiles.TIMOBILE_FILES);
 	}
 
 	/**
@@ -224,7 +227,7 @@ public class JSParserPerformanceTest extends GlobalTimePerformanceTestCase
 	 */
 	public void testTinyMce() throws Exception
 	{
-		assertParse(430, ITestFiles.TINY_MCE_FILES);
+		assertParse(1, ITestFiles.TINY_MCE_FILES);
 	}
 
 	/**
@@ -259,6 +262,7 @@ public class JSParserPerformanceTest extends GlobalTimePerformanceTestCase
 			}
 			catch (Exception e)
 			{
+				e.printStackTrace();
 				fail(e.getMessage());
 			}
 			stopMeasuring();
