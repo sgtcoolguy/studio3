@@ -1711,6 +1711,12 @@ public abstract class JSParserTest
 			assertNoErrors();
 		}
 	}
+	
+	@Test
+	public void testLotsofFunctionInvocations() throws IOException, Exception {
+		parse(getSource("performance/jaxer/regress-155081-2.js"));
+		assertNoErrors();
+	}
 
 	@Test
 	public void testJaxerFiles() throws Exception
@@ -1723,7 +1729,7 @@ public abstract class JSParserTest
 		}
 	}
 
-	private void assertNoErrors()
+	protected void assertNoErrors()
 	{
 		if (fParseResult.getErrors().isEmpty())
 		{
@@ -1823,7 +1829,7 @@ public abstract class JSParserTest
 	 * @return
 	 * @throws IOException
 	 */
-	private String getSource(String resourceName) throws IOException
+	protected String getSource(String resourceName) throws IOException
 	{
 		InputStream stream = FileLocator.openStream(Platform.getBundle(JSCorePlugin.PLUGIN_ID), new Path(resourceName),
 				false);
