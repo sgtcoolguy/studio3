@@ -5,3 +5,21 @@
 	font-size: 14;
 	font-family: 'PT Sans'; /* Available in Mac since Lion */
 }
+
+/* ###################### Global Styles ########################## */
+
+/* Use unset to set the foreground/background color to null */
+
+Table[swt-lines-visible=true] {
+    background-color: unset;
+}
+
+Tree[swt-lines-visible=true] {
+    background-color: unset;
+}
+
+Button  {
+    background-color: unset;
+    color: unset;
+}
+

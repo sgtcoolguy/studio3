@@ -1,7 +1,8 @@
-@import url("platform:/plugin/org.eclipse.ui.themes/css/dark/e4-dark_basestyle.css");
+@import url("platform:/plugin/org.eclipse.ui.themes/css/dark/e4-dark_ide_colorextensions.css");
 @import url("platform:/plugin/org.eclipse.ui.themes/css/dark/e4-dark_globalstyle.css"); /* Remove this to have ONLY the main IDE shell dark */
 @import url("platform:/plugin/org.eclipse.ui.themes/css/dark/e4-dark_partstyle.css");
 /* @import url("platform:/plugin/org.eclipse.ui.themes/css/dark/e4-dark_tabstyle.css"); */
+@import url("platform:/plugin/org.eclipse.ui.themes/css/dark/e4-dark-drag-styling.css");
 
 /* ########################### Original dark part styles ################ */
 
@@ -32,6 +33,7 @@ CTabItem,
 CTabItem CLabel,
 .MPartStack.active > CTabItem,
 .MPartStack.active > CTabItem CLabel {
+    background-color: #242424;
     color: #939399;
 }
 CTabItem:selected,
@@ -124,7 +126,7 @@ CTabFolder.MArea .MPartStack, CTabFolder.MArea .MPartStack.active {
 }
 
 /* Try to reset color of toolbar items in package/project explorer */
-CTabFolder ToolBar.MToolBar {
+CTabFolder ToolBar {
   background-color: #242424; /* FIXME: This is not picking up down arrow icon in outline view! */
   /* This results in a weird drawing artifact on Outline/Console! */
 }
@@ -140,10 +142,11 @@ CTabFolder ToolBar.MToolBar {
     color: #BDBAB7;
 }
 
-StatusLine, ImageBasedFrame{
+StatusLine, ImageBasedFrame {
     color: #BDBAB7;
 }
 
 Composite.MPartSashContainer {
     background-color: #2d2d30;
 }
+
