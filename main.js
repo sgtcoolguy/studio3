@@ -85,8 +85,10 @@ async function updateDotProjectName(bundlesDir, dir) {
 	}
 
 	const dotProject = path.join(dirPath, '.project');
-	const contents = await fs.readFile(dotProject, 'utf8');
-	return fs.writeFile(dotProject, contents.replace(/name>.+?<\/name>/, `name>${dir}</name>`), 'utf8');
+	if (await fs.pathExists(dotProject)) {
+		const contents = await fs.readFile(dotProject, 'utf8');
+		return fs.writeFile(dotProject, contents.replace(/name>.+?<\/name>/, `name>${dir}</name>`), 'utf8');
+	}
 }
 
 async function main() {
