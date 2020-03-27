@@ -8,12 +8,13 @@
 package com.aptana.js.debug.core.internal;
 
 import java.io.InputStream;
+import java.nio.charset.Charset;
 
 @SuppressWarnings("restriction")
 public class OutputStreamMonitor extends org.eclipse.debug.internal.core.OutputStreamMonitor {
 
 	public OutputStreamMonitor(InputStream stream, String encoding) {
-		super(stream, encoding);
+		super(stream, Charset.forName(encoding));
 	}
 
 	/*

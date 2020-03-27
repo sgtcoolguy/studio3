@@ -14,6 +14,7 @@ package com.aptana.terminal.connector;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -219,7 +220,7 @@ public class LocalTerminalConnector extends TerminalConnectorImpl implements IPr
 			processLauncher.addProcessListener(this);
 			processLauncher.launch();
 
-			streamsProxy = new StreamsProxy(processLauncher.getProcess(), ENCODING);
+			streamsProxy = new StreamsProxy(processLauncher.getProcess(), Charset.forName(ENCODING));
 			sendTerminalSize();
 
 			// Hook up standard input:
